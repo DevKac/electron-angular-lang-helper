@@ -1,0 +1,36 @@
+@import '../../shared/partials/variables';
+
+.lang-files-input-info {
+  color: $font-color-dark;
+  padding-top: $element-padding-inside;
+  padding-bottom: $element-padding-inside;
+}
+.lang-files-input-group .custom-file-label {
+  border: none;
+  border-radius: $input-border-radius;
+}
+.lang-files-input-group .custom-file-label::after {
+  color: $font-color-light;
+  background-color: $background-color-dark;
+  padding-left: $element-space-after;
+  padding-right: $element-space-after;
+  border-radius: 0 $input-border-radius $input-border-radius 0;
+  height: 100%;
+}
+.lang-file-container {
+  /*
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  */
+}
+
+@import '../../shared/partials/loader';
+
+.switch-container {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+@import '../../shared/partials/switch';

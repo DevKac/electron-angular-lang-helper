@@ -1,0 +1,57 @@
+@import "../../shared/partials/variables";
+
+.lang-data-holder-accordion-item-holder > div.flex-center-left {
+  padding: $element-padding-inside $element-padding-inside*2;
+}
+.lang-data-holder-accordion-item-holder > div.flex-center-right > div.lang-data-holder-accordion-icon-holder,
+.lang-data-holder-accordion-item-holder > div.flex-center-right > div.lang-data-holder-accordion-text-holder {
+  padding: $element-padding-inside $element-padding-inside*2;
+}
+.lang-data-holder-accordion-item-holder input {
+  padding: 0 $element-padding-inside;
+  border: none;
+  height: auto;
+  color: $font-color-dark;
+}
+.lang-data-holder-accordion-item-holder .form-control:focus {
+  box-shadow: none;
+}
+.lang-data-holder-accordion-icon-holder {
+  border-left: 1px solid $font-color-light;
+}
+
+.lang-data-holder-list .list-group-item {
+  border-color: $font-color-dark;
+  color: $font-color-dark;
+  padding: 0;
+}
+.lang-data-holder-list .list-group-item:first-child {
+  border-radius: 0;
+}
+.lang-data-holder-list .list-group-item:last-child {
+  border-radius: 0;
+}
+.lang-data-holder-list-group-item-holder > div.flex-center-left {
+  padding: $element-padding-inside $element-padding-inside*2;
+}
+.lang-data-holder-list-group-item-holder > div.flex-center-right > div.lang-data-holder-list-icon-holder > i {
+  padding: $element-padding-inside $element-padding-inside*2;
+}
+.lang-data-holder-list-group-item-holder input {
+  padding: 0;
+  border: none;
+  height: auto;
+  color: $font-color-dark;
+}
+.lang-data-holder-list-group-item-holder .form-control:focus {
+  box-shadow: none;
+}
+.lang-data-holder-list-icon-holder:before {
+  border-left: 1px solid $font-color-dark;
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+

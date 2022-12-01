@@ -1,0 +1,74 @@
+<div class="lang-files-input-info" *ngIf="!langFile || !langFile.langs.length">
+  Please choose folder with your json lang files (i18n) using input below
+</div>
+<!-- Input file form -->
+<div class="input-group lang-files-input-group margin-bottom-between-elements">
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile" #inputGroupFile webkitdirectory directory (change)="loadFilesFromFolder($event)">
+    <label class="custom-file-label" for="inputGroupFile">Choose folder</label>
+  </div>
+</div>
+<!-- End of Input file form -->
+<!-- Error message -->
+<ng-container *ngIf="error; else no_error">
+  <div class="error-text">
+    <i class="fa fa-exclamation-triangle"></i>
+    <ng-container *ngIf="errorMsg; else default_error">
+      {{ errorMsg }}
+    </ng-container>
+    <ng-template #default_error>
+      Unspecified error occured. Please try to reload the application
+    </ng-template>
+  </div>
+</ng-container>
+<!-- End of Error message -->
+<ng-template #no_error>
+  <!-- Loading icon -->
+  <ng-container *ngIf="loading; else no_loading">
+    <div class="loader"></div>
+  </ng-container>
+  <!-- End of Loading icon -->
+  <ng-template #no_loading>
+    <!-- Success message -->
+    <ng-container *ngIf="success">
+      <div class="success-text">
+        <i class="fa fa-check"></i>
+        <ng-container *ngIf="successMsg; else default_success">
+          {{ successMsg }}
+        </ng-container>
+        <ng-template #default_error>
+          Success
+        </ng-template>
+      </div>
+    </ng-container>
+    <!-- End of Success message -->
+    <!-- Display translations -->
+    <div class="lang-files-container margin-bottom-between-elements" *ngIf="langFile">
+      <app-lang-data-holder
+        [langTranslations]="langFile.translations"
+        [listOfAllLangs]="langFile.langs"
+        (dataNeedsSaving)="requestSaveLangFile()"
+      ></app-lang-data-holder>
+    </div>
+    <!-- End of Display translations -->
+    <!-- Buttons row -->
+    <div class="flex-center-space-between flex-wrap-content margin-bottom-between-elements" *ngIf="langFile">
+      <!-- Autosave toggle -->
+      <div class="switch-container" *ngIf="langFile">
+        <span class="switch" >
+          <input type="checkbox" class="switch" id="switch-id" [(ngModel)]="autosave">
+          <label for="switch-id">
+            <ng-container *ngIf="!autosave">Click to turn autosave on</ng-container>
+            <ng-container *ngIf="autosave">Click to turn autosave off</ng-container>
+          </label>
+        </span>
+      </div>
+      <!-- End of Autosave toggle -->
+      <button *ngIf="!autosave" type="button" class="btn btn-primary" (click)="saveLangFile()">
+        <i class="fa fa-save"></i>
+        Save
+      </button>
+    </div>
+    <!-- End of Buttons row -->
+  </ng-template>
+</ng-template>

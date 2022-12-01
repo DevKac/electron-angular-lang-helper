@@ -1,0 +1,26 @@
+@import 'shared/partials/variables';
+
+.app-main-header {
+  color: $font-color-light;
+  background-color: $background-color-dark;
+  padding-top: $element-padding-inside;
+  padding-bottom: $element-padding-inside;
+}
+.app-main-header h1 {
+  font-size: $font-size-big;
+  margin-bottom: 0;
+}
+.app-main-subheader {
+  color: $font-color-dark;
+  padding-top: $element-padding-inside;
+  padding-bottom: $element-padding-inside;
+}
+.app-main-subheader p {
+  margin-bottom: 0;
+}
+.app-main-divider {
+  margin-top: 0;
+  margin-bottom: $element-space-after;
+  border-top-color: $font-color-dark;
+  border-top-width: 2px;
+}

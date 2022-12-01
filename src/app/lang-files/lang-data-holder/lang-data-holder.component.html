@@ -1,0 +1,111 @@
+<div>
+  <ng-container *ngIf="translationsNested; else not_nested">
+    <!-- Render accordion with translations -->
+    <ngb-accordion [closeOthers]="true">
+      <ngb-panel *ngFor="let translation of langTranslations; let index = index" id="{{ translation.langKey }}-{{index}}">
+        <!-- Header of translation panel -->
+        <ng-template ngbPanelTitle>
+          <div class="flex-center-space-between lang-data-holder-accordion-item-holder">
+            <div class="flex-center-left flex-grow-1">
+              <ng-container *ngIf="translation.edit; else not_edit">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Key" aria-label="Key" [(ngModel)]="translation.langKey">
+                </div>
+              </ng-container>
+              <ng-template #not_edit>
+                <div>
+                  <span>{{ translation.langKey }}</span>
+                </div>
+              </ng-template>
+            </div>
+            <div class="flex-center-right">
+              <div *ngIf="translation.edit" class="lang-data-holder-accordion-icon-holder">
+                <i class="fa fa-save fa-lg clickable" (click)="saveTranslation(translation)" placement="top" ngbTooltip="Save value"></i>
+              </div>
+              <div *ngIf="translation.edit" class="lang-data-holder-accordion-icon-holder">
+                <i class="fa fa-times-circle fa-lg clickable" (click)="cancelEdit(translation)" placement="top" ngbTooltip="Discard changes"></i>
+              </div>
+              <div *ngIf="!translation.edit" class="lang-data-holder-accordion-icon-holder">
+                <i class="fa fa-pencil fa-lg clickable" (click)="openEdit(translation)" placement="top" ngbTooltip="Edit this value"></i>
+              </div>
+              <div class="lang-data-holder-accordion-icon-holder">
+                <i class="fa fa-trash fa-lg clickable" (click)="removeTransation(translation)" placement="top" ngbTooltip="Remove this translation"></i>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <!-- End of Header of translation panel -->
+        <!-- Content of panel -->
+        <ng-template ngbPanelContent>
+          <app-lang-data-holder
+            [langTranslations]="translation.langValue"
+            [listOfAllLangs]="listOfAllLangs"
+            (dataNeedsSaving)="callDataSaving()"
+          ></app-lang-data-holder>
+        </ng-template>
+        <!-- End of Content of panel -->
+      </ngb-panel>
+    </ngb-accordion>
+    <!-- Field for adding new values -->
+    <div class="according-extra-tab card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <div class="flex-center-space-between flex-wrap-content lang-data-holder-accordion-item-holder">
+              <div class="flex-center-left">
+                <div class="clickable" (click)="addNewEmptyValue(true)">
+                  <span>Add new nested value </span>
+                  <i class="fa fa-plus"></i>
+                </div>
+              </div>
+              <div class="flex-center-right">
+                <div class="lang-data-holder-accordion-text-holder clickable" (click)="addNewEmptyValue(false)">
+                  <span>Add new translation value </span>
+                  <i class="fa fa-plus"></i>
+                </div>
+              </div>
+            </div>
+          </button>
+        </h5>
+      </div>
+    </div>
+    <!-- End of Field for adding new values -->
+    <!-- End of Render accordion with translations -->
+  </ng-container>
+  <ng-template #not_nested>
+    <!-- Show list of not nested values. Here only values can be modified, never keys -->
+    <ul class="list-group lang-data-holder-list">
+      <li class="list-group-item" *ngFor="let translation of langTranslations">
+        <div class="flex-center-space-between lang-data-holder-list-group-item-holder">
+          <div class="flex-center-left flex-grow-1">
+            <div class="margin-right-5">
+              {{ translation.langKey }}:
+            </div>
+            <div style="width: 100%; word-break: break-word">
+              <ng-container *ngIf="translation.edit; else not_edit">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Value" aria-label="Value" [(ngModel)]="translation.langValue"> 
+                </div>
+              </ng-container>
+              <ng-template #not_edit>
+                {{ translation.langValue }}
+              </ng-template>
+            </div>
+          </div>
+          <div class="flex-center-right">
+            <div *ngIf="translation.edit" class="lang-data-holder-list-icon-holder">
+              <i class="fa fa-save fa-lg clickable" (click)="saveTranslation(translation)" placement="top" ngbTooltip="Save value"></i>
+            </div>
+            <div *ngIf="translation.edit" class="lang-data-holder-list-icon-holder">
+              <i class="fa fa-times-circle fa-lg clickable" (click)="cancelEdit(translation)" placement="top" ngbTooltip="Discard changes"></i>
+            </div>
+            <div *ngIf="!translation.edit" class="lang-data-holder-list-icon-holder">
+              <i class="fa fa-pencil fa-lg clickable" (click)="openEdit(translation)" placement="top" ngbTooltip="Edit this value"></i>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <!-- End of Show list of not nested values -->
+  </ng-template>
+</div>

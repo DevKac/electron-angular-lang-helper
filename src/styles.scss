@@ -1,0 +1,98 @@
+@import "app/shared/partials/variables";
+
+/* You can add global styles to this file, and also import other style files */
+.clickable {
+  cursor: pointer;
+}
+.error-text {
+  color: red;
+}
+.flex-center-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex-center-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.flex-center-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-grow-1 {
+  flex-grow: 1;
+}
+.flex-wrap-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.margin-bottom-between-elements {
+  margin-bottom: $element-space-after;
+}
+.margin-right-5 {
+  margin-right: 5px;
+} 
+.success-text {
+  color: green;
+}
+// used to make accordion pales full width
+body {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(
+        $light-blue, $darkest-blue
+    );
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h5 > button {
+  width: 100%;
+}
+.card-header {
+  border-bottom: none;
+}
+.lang-files-container .card {
+  border-radius: 0;
+}
+.according-extra-tab.card {
+  border-top: none;
+}
+.accordion .card:last-of-type {
+  border-bottom: 1px solid $font-color-light;
+}
+.accordion .card,
+.according-extra-tab.card {
+  border-color: $font-color-light;
+}
+.accordion .card .card-header,
+.according-extra-tab.card .card-header {
+  background-color: $font-color-dark;
+  padding: 0;
+}
+.accordion .card .card-body,
+.according-extra-tab.card .card-body {
+  padding: $element-padding-inside;
+}
+.accordion .card .card-header h5 > button,
+.according-extra-tab.card .card-header h5 > button {
+  border: none;
+  padding: 0;
+  color: $font-color-light;
+}
+.accordion .card .card-header:first-child,
+.according-extra-tab.card .card-header:first-child {
+  border-radius: 0;
+}
+.accordion .card .card-header:last-child,
+.according-extra-tab.card .card-header:last-child {
+  border-radius: 0;
+}
+.btn-primary {
+  color: #fff;
+  background-color: $font-color-dark;
+  border-color: $font-color-light;
+}
